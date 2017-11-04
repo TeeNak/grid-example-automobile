@@ -1,0 +1,44 @@
+{
+  "name": "grid-example-automobile",
+  "version": "0.0.0",
+  "engineStrict": true,
+  "engines": {
+    "node": ">= 8.0.32"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/node": "^8.0.32",
+    "chai": "^4.1.2",
+    "chai-fs": "^1.0.0",
+    "cpr": "^2.2.0",
+    "mocha": "^3.5.3",
+    "rimraf": "~2.6.2",
+    "ts-node": "^3.3.0",
+    "tslint": "~5.7.0",
+    "tslint-microsoft-contrib": "~5.0.1",
+    "tsutils": "~2.9.0",
+    "typescript": "^2.5.2"
+  },
+  "scripts": {
+    "start": "npm run build && npm run app",
+    "debug": "node --nolazy --inspect-brk=9229 build/src/main.js",
+    "app": "node build/src/main.js",
+    "clean": "rimraf coverage build tmp",
+    "build": "cpr config build/config -d && tsc -p tsconfig.release.json",
+    "watch": "cpr config build/config -d && tsc -w -p tsconfig.release.json",
+    "lint": "tslint -t stylish --type-check --project \"tsconfig.json\"",
+    "test": "npm run test-only",
+    "test-only": "mocha -c -S -R spec --compilers ts:ts-node/register",
+    "test:watch": "jest --watch"
+  },
+  "author": "Taishun Nakatani",
+  "dependencies": {
+    "@types/commander": "^2.9.2",
+    "@types/fs-extra": "^4.0.2",
+    "@types/mocha": "^2.2.44",
+    "commander": "^2.11.0",
+    "fs-extra": "^4.0.2",
+    "rfc6902": "^2.2.1",
+    "tslib": "~1.7.1"
+  }
+}
